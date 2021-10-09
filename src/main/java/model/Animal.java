@@ -135,8 +135,8 @@ public class Animal {
 		this.animalId = animalId;
 	}
 	
-	@Override
-	public String returnAnimalDaycareDetails() {
+
+	public String AnimalDaycareDetails() {
 		
 		return "Animal ID: " + this.animalId + " || " + "Animal Type: " + this.animalType + " || " + "Animal Breed: " + this.animalBreed + " || " + "Animal Name: " + this.animalName +
 				" || " + "Animal Owner's Name: " + this.animalOwnerName + " || " + "Check In Date/Time: " + this.animalCheckInDateTime;
