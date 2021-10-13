@@ -34,18 +34,19 @@ public class Animal {
 		super();
 	}
 	
-	public Animal(int animalId, String animalType, String animalBreed, String animalName, String animalColor, String animalOwnerName, LocalDateTime animalCheckInDateTime) {
+	public Animal(String animalType, String animalBreed, String animalName, String animalColor, String animalOwnerName) {
+		
 		super();
 		
-		this.animalId = animalId;
 		this.animalType = animalType;
 		this.animalBreed = animalBreed;
 		this.animalName = animalName;
 		this.animalColor = animalColor;
 		this.animalOwnerName = animalOwnerName;
-		this.animalCheckInDateTime = animalCheckInDateTime;
+	
 		
 	}
+	
 	/**
 	 * @return the animalBreed
 	 */
