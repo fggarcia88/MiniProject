@@ -1,7 +1,5 @@
 package model;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +18,7 @@ public class Animal {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "Animal Checkin ID")
+	@Column(name = "id")
 	private int animalId;
 
 	private String animalType;
@@ -28,10 +26,11 @@ public class Animal {
 	private String animalName;
 	private String animalColor;
 	private String animalOwnerName;
-	private LocalDateTime animalCheckInDateTime;
 	
 	public Animal() {
+		
 		super();
+		
 	}
 	
 	public Animal(String animalType, String animalBreed, String animalName, String animalColor, String animalOwnerName) {
@@ -98,15 +97,11 @@ public class Animal {
 	/**
 	 * @return the animalCheckInDate
 	 */
-	public LocalDateTime getAnimalCheckInDateTime() {
-		return animalCheckInDateTime;
-	}
+	
 	/**
 	 * @param animalCheckInDate the animalCheckInDate to set
 	 */
-	public void setAnimalCheckInDateTime(LocalDateTime animalCheckInDate) {
-		this.animalCheckInDateTime = animalCheckInDate;
-	}
+	
 
 	/**
 	 * @return the animalType
@@ -140,7 +135,7 @@ public class Animal {
 	public String AnimalDaycareDetails() {
 		
 		return "Animal ID: " + this.animalId + " || " + "Animal Type: " + this.animalType + " || " + "Animal Breed: " + this.animalBreed + " || " + "Animal Name: " + this.animalName +
-				" || " + "Animal Owner's Name: " + this.animalOwnerName + " || " + "Check In Date/Time: " + this.animalCheckInDateTime;
+				" || " + "Animal Owner's Name: " + this.animalOwnerName;
 	}
 	
 
