@@ -126,10 +126,13 @@ public void insertAnimal(Animal a) {
 
 	/**
 	 * @param toEdit
-	 */
-	public void updateAnimal(Animal toEdit) {
-		// TODO Auto-generated method stub
-		
+	 */	
+	public void updateAnimal(Animal toUpdate) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toUpdate);
+		em.getTransaction().commit();
+		em.close();		
 	}
 
 }

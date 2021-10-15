@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Animal;
+
+
 /**
  * Servlet implementation class EditAnimalServlet
  */
-@WebServlet("/EditAnimalServlet")
+@WebServlet("/editAnimalServlet")
 public class EditAnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,8 +37,26 @@ public class EditAnimalServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		AnimalHelper ah = new AnimalHelper();
+		
+		String animalName = request.getParameter("animalName");
+		String type = request.getParameter("type");
+		String breed = request.getParameter("breed");
+		String color = request.getParameter("color");
+		String ownerName = request.getParameter("ownerName");
+		Integer tempId = Integer.parseInt(request.getParameter("id"));
+		
+		Animal animalToUpdate = ah.searchForAnimalByAnimalId(tempId);
+		
+		animalToUpdate.setAnimalName(animalName);
+		animalToUpdate.setAnimalType(type);
+		animalToUpdate.setAnimalBreed(breed);
+		animalToUpdate.setAnimalColor(color);
+		animalToUpdate.setAnimalOwnerName(ownerName);
+		
+		ah.updateAnimal(animalToUpdate);
+		
+		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
 	}
 
 }

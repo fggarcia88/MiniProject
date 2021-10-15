@@ -8,13 +8,13 @@
         <title>Animal Day Care Check-in System</title>
     </head>
 <body>
-		<h1>Animal Day Care</h1>
-		<form action ="editItemServlet" method="post">
+	<h1>Animal Day Care</h1>
+	<form action ="editAnimalServlet" method="post">
+		Animal Name: <input type ="text" name ="name" value="${itemToEdit.name}">
+		<br>
 		Type: <input type ="text" name ="type" value="${itemToEdit.type}">
 		<br>
 		Breed: <input type ="text" name ="breed" value="${itemToEdit.breed}">
-		<br>
-		Name: <input type ="text" name ="name" value="${itemToEdit.name}">
 		<br>
 		Color: <input type ="text" name ="color" value="${itemToEdit.color}">
 		<br>		
@@ -22,6 +22,6 @@
 		<br>
 		<input type ="hidden" name ="id" value="${itemToEdit.id}">
 		<input type ="submit" value="Save Edited Item">
-		</form>
+	</form>
     </body>
 </html>

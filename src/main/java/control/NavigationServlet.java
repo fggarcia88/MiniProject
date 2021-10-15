@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Animal;
+
+
 /**
  * Servlet implementation class NavigationServlet
  */
-@WebServlet("/NavigationServlet")
+@WebServlet("/navigationServlet")
 public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,8 +37,33 @@ public class NavigationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String act = request.getParameter("doThisToItem");
+		AnimalHelper ah = new AnimalHelper();
+		String path = "/viewAllAnimalsServlet";
+		
+		if (act.equals("Delete")) {
+			try {
+			Integer tempId = Integer.parseInt(request.getParameter("id"));
+			Animal animalToDelete = ah.searchForAnimalByAnimalId(tempId);
+			ah.deleteAnimal(animalToDelete);
+			} catch (NumberFormatException e) {
+				System.out.println("No option selected.");
+			}
+		}
+		else if (act.equals("Edit")) {
+			try {
+			Integer tempId = Integer.parseInt(request.getParameter("id"));
+			Animal itemToEdit = ah.searchForAnimalByAnimalId(tempId);
+			request.setAttribute("itemToEdit", itemToEdit);
+			path = "/animal-edit.jsp";
+			} catch (NumberFormatException e) {
+				System.out.println("No option selected.");
+			}
+		}
+		else if (act.equals("Return")) {
+			path = "/index.html";
+		}
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 }

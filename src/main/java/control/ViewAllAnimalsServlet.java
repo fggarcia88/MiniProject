@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  * Servlet implementation class ViewAllAnimalsServlet
  */
-@WebServlet("/ViewAllAnimalsServlet")
+@WebServlet("/viewAllAnimalsServlet")
 public class ViewAllAnimalsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +27,13 @@ public class ViewAllAnimalsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		AnimalHelper ah = new AnimalHelper();
+		request.setAttribute("allItems", ah.showAllAnimals());
+		String path = "/animal-list.jsp";
+		if (ah.showAllAnimals().isEmpty()){
+			path = "/index.html";
+		}
+		getServletContext().getRequestDispatcher(path).forward(request,	response);
 	}
 
 	/**

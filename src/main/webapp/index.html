@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Animal Day Care Check-in System</title>
+    </head>
 <body>
-
+    <h1>Animal Day Care</h1>
+    <form action="addAnimalServlet" method="post">
+        Animal Name: <input type="text" name="animalName">
+        <br>
+        Type: <input type="text" name="type">
+        <br>
+        Breed: <input type="text" name="breed">
+        <br>                
+        Color: <input type="text" name="color">
+        <br>
+        Owner Name: <input type="text" name="ownerName">
+        <br>
+        <input type="submit" value="Add Item">
+    </form>
+	<a href="viewAllAnimalsServlet">View all animals</a>
 </body>
 </html>

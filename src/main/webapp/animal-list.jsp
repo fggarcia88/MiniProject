@@ -20,11 +20,11 @@
 		</tr>                
 		<c:forEach items="${requestScope.allItems}" var="currentitem">
 			<tr>
-			<td><input type="radio" name="id" value="${currentitem.id}">${currentitem.animalName} </td>
-			<td>${currentitem.type}</td>
-			<td>${currentitem.breed}</td>
-			<td>${currentitem.color}</td>
-			<td>${currentitem.ownerName}</td>
+				<td><input type="radio" name="id" value="${currentitem.id}">${currentitem.animalName} </td>
+				<td>${currentitem.type}</td>
+				<td>${currentitem.breed}</td>
+				<td>${currentitem.color}</td>
+				<td>${currentitem.ownerName}</td>
 			</tr>
 		</c:forEach>
 	</table>
