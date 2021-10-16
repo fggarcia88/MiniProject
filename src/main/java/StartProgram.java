@@ -181,7 +181,7 @@ public class StartProgram {
 				} else if (selection == 4) {
 					viewTheList();
 				} else {
-					//lih.cleanUp();
+					ah.cleanUp();
 					System.out.println("   Goodbye!   ");
 					goAgain = false;
 				}

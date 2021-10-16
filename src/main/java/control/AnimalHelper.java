@@ -75,8 +75,16 @@ public void insertAnimal(Animal a) {
 	public List<Animal> searchForAnimalByType(String animalType) {
 		// TODO Auto-generated method stub
 		
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalType = :selectedAnimalType", Animal.class);
+		typedQuery.setParameter("selectedAnimalType", animalType);
+		List<Animal>foundAnimalName = typedQuery.getResultList();
+		em.close();
 		
-		return null;
+		return foundAnimalName;
+		
+	
 	}
 
 	/**
@@ -85,7 +93,15 @@ public void insertAnimal(Animal a) {
 	 */
 	public List<Animal> searchForAnimalByBreed(String animalBreed) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalBreed = :selectedAnimalBreed", Animal.class);
+		typedQuery.setParameter("selectedAnimalBreed", animalBreed);
+		List<Animal>foundAnimalBreed = typedQuery.getResultList();
+		em.close();
+		
+		return foundAnimalBreed;
 	}
 
 	/**
@@ -94,7 +110,15 @@ public void insertAnimal(Animal a) {
 	 */
 	public List<Animal> searchForAnimalByName(String animalName) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalName = :selectedAnimalName", Animal.class);
+		typedQuery.setParameter("selectedAnimalName", animalName);
+		List<Animal>foundAnimalName = typedQuery.getResultList();
+		em.close();
+		
+		return foundAnimalName;
 	}
 
 	/**
@@ -103,7 +127,15 @@ public void insertAnimal(Animal a) {
 	 */
 	public List<Animal> searchForAnimalByColor(String animalColor) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalColor = :selectedAnimalColor", Animal.class);
+		typedQuery.setParameter("selectedAnimalColor", animalColor);
+		List<Animal>foundAnimalColor = typedQuery.getResultList();
+		em.close();
+		
+		return foundAnimalColor;
 	}
 
 	/**
@@ -112,17 +144,30 @@ public void insertAnimal(Animal a) {
 	 */
 	public List<Animal> searchForAnimalByOwnerName(String animalOwnerName) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalOwnerName = :selectedAnimalOwnerName", Animal.class);
+		typedQuery.setParameter("selectedAnimalOwnerName", animalOwnerName);
+		List<Animal>foundAnimalOwnerName = typedQuery.getResultList();
+		em.close();
+		
+		return foundAnimalOwnerName;
 	}
 
 	/**
 	 * @param idToEdit
 	 * @return
 	 */
-	public Animal searchForAnimalByAnimalId(int idToEdit) {
+	 	public Animal searchForAnimalByAnimalId(int animalId) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+	 		
+	 		EntityManager em = emfactory.createEntityManager();
+	 		em.getTransaction().begin();
+	 		Animal foundAnimalId = em.find(Animal.class, animalId);
+	 		em.close();
+	 		return foundAnimalId;
+	} 
 
 	/**
 	 * @param toEdit
@@ -133,6 +178,12 @@ public void insertAnimal(Animal a) {
 		em.merge(toUpdate);
 		em.getTransaction().commit();
 		em.close();		
+	}
+	
+	public void cleanUp() {
+		
+		emfactory.close();
+		
 	}
 
 }
