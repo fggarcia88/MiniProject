@@ -1,24 +1,27 @@
 package control;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AnimalListDetails;
 
 /**
- * Servlet implementation class ViewAllAnimalsServlet
+ * Servlet implementation class ViewAllListsServlet
  */
-@WebServlet("/viewAllAnimalsServlet")
-public class ViewAllAnimalsServlet extends HttpServlet {
+@WebServlet("/viewAllListsServlet")
+public class ViewAllListsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllAnimalsServlet() {
+    public ViewAllListsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +30,16 @@ public class ViewAllAnimalsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AnimalHelper ah = new AnimalHelper();
-		request.setAttribute("allAnimals", ah.showAllAnimals());
-		String path = "/animal-list.jsp";
-		if (ah.showAllAnimals().isEmpty()){
+		AnimalListDetailsHelper aldh = new AnimalListDetailsHelper();
+		List<AnimalListDetails> ald = aldh.getLists();
+		request.setAttribute("allLists", ald);
+		String path = "/animal-list-by-owner.jsp";
+		
+		if(ald.isEmpty()) {
+			request.setAttribute("allLists", " ");
 			path = "/index.html";
 		}
-		getServletContext().getRequestDispatcher(path).forward(request,	response);
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**

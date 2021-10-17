@@ -53,9 +53,9 @@ public class NavigationServlet extends HttpServlet {
 		else if (act.equals("Edit")) {
 			try {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			Animal itemToEdit = ah.searchForAnimalByAnimalId(tempId);
-			request.setAttribute("itemToEdit", itemToEdit);
-			path = "/animal-edit.jsp";
+			Animal animalToEdit = ah.searchForAnimalByAnimalId(tempId);
+			request.setAttribute("animalToEdit", animalToEdit);
+			path = "/edit-animal.jsp";
 			} catch (NumberFormatException e) {
 				System.out.println("No option selected.");
 			}

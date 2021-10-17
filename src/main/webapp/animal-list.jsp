@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Animal Day Care Check-in System</title>
+		<title>Animal List</title>
 	</head>
 <body>
 <h1>Animal Day Care</h1>
@@ -19,19 +19,27 @@
 			<th>Color</th>
 			<th>Owner Name</th>
 		</tr>                
-		<c:forEach items="${requestScope.allItems}" var="currentitem">
+		<c:forEach items="${requestScope.allAnimals}" var="currentitem">
 			<tr>
-				<td><input type="radio" name="id" value="${currentitem.id}">${currentitem.animalName} </td>
-				<td>${currentitem.type}</td>
-				<td>${currentitem.breed}</td>
-				<td>${currentitem.color}</td>
-				<td>${currentitem.ownerName}</td>
+				<td><input type="radio" name="id" value="${currentitem.animalId}">
+				${currentitem.animalName}</td>
+				<td>${currentitem.animalType}</td>
+				<td>${currentitem.animalBreed}</td>
+				<td>${currentitem.animalColor}</td>
+				<td>${currentitem.animalOwnerName}</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<input type="submit" value="Edit" name="doThisToItem">
 	<input type="submit" value="Delete" name="doThisToItem">
-	<input type="submit" value="Return" name ="doThisToItem">
 	</form>
+<h2>Menu</h2>
+<a href="index.html">Add a new animal</a>
+<br>
+<a href="viewAllAnimalsServlet">View the Animals in Day Care</a>
+<br>
+<a href="viewAllListsServlet">View all Owner Lists</a>
+<br>
+<a href="addAnimalsForListServlet">Create a Owner List</a>
 </body>
 </html>

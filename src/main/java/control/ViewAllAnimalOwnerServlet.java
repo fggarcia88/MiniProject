@@ -26,8 +26,13 @@ public class ViewAllAnimalOwnerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		AnimalOwnerHelper aoh = new AnimalOwnerHelper();
+		request.setAttribute("allAnimalOwners", aoh.showAllAnimalOwners());
+		String path = "/owner-list.jsp";
+		if (aoh.showAllAnimalOwners().isEmpty()){
+			path = "/index.html";
+		}
+		getServletContext().getRequestDispatcher(path).forward(request,	response);
 	}
 
 	/**

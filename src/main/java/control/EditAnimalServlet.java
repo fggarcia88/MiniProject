@@ -56,7 +56,7 @@ public class EditAnimalServlet extends HttpServlet {
 		
 		ah.updateAnimal(animalToUpdate);
 		
-		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllAnimalsServlet").forward(request, response);
 	}
 
 }

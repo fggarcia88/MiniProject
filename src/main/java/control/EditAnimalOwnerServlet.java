@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AnimalOwner;
+
 /**
  * Servlet implementation class EditAnimalOwnerServlet
  */
-@WebServlet("/EditAnimalOwnerServlet")
+@WebServlet("/editAnimalOwnerServlet")
 public class EditAnimalOwnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,8 +36,20 @@ public class EditAnimalOwnerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		AnimalOwnerHelper aoh = new AnimalOwnerHelper();
+		
+		String animalOwnerFirstName = request.getParameter("animalOwnerFirstName");
+		String animalOwnerLastName = request.getParameter("animalOwnerLastName");
+		Integer tempId = Integer.parseInt(request.getParameter("id"));
+		
+		AnimalOwner animalOwnerToUpdate = aoh.searchForAnimalByAnimalId(tempId);
+		
+		animalOwnerToUpdate.setAnimalOwnerFirstName(animalOwnerFirstName);
+		animalOwnerToUpdate.setAnimalOwnerLastName(animalOwnerLastName);
+		
+		aoh.updateAnimal(animalOwnerToUpdate);
+		
+		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
 	}
 
 }

@@ -10,17 +10,17 @@
 <body>
 	<h1>Animal Day Care</h1>
 	<form action ="editAnimalServlet" method="post">
-		Animal Name: <input type ="text" name ="name" value="${itemToEdit.name}">
+		Animal Name: <input type ="text" name ="animalName" value="${animalToEdit.animalName}">
 		<br>
-		Type: <input type ="text" name ="type" value="${itemToEdit.type}">
+		Type: <input type ="text" name ="type" value="${animalToEdit.animalType}">
 		<br>
-		Breed: <input type ="text" name ="breed" value="${itemToEdit.breed}">
+		Breed: <input type ="text" name ="breed" value="${animalToEdit.animalBreed}">
 		<br>
-		Color: <input type ="text" name ="color" value="${itemToEdit.color}">
+		Color: <input type ="text" name ="color" value="${animalToEdit.animalColor}">
 		<br>		
-		Owner Name: <input type ="text" name ="ownerName" value="${itemToEdit.ownerName}">
+		Owner Name: <input type ="text" name ="ownerName" value="${animalToEdit.animalOwnerName}">
 		<br>
-		<input type ="hidden" name ="id" value="${itemToEdit.id}">
+		<input type ="hidden" name ="id" value="${animalToEdit.animalId}">
 		<input type ="submit" value="Save Edited Item">
 	</form>
     </body>

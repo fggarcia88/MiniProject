@@ -7,18 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
- * Servlet implementation class ViewAllAnimalsServlet
+ * Servlet implementation class AddAnimalsForListServlet
  */
-@WebServlet("/viewAllAnimalsServlet")
-public class ViewAllAnimalsServlet extends HttpServlet {
+@WebServlet("/addAnimalsForListServlet")
+public class AddAnimalsForListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllAnimalsServlet() {
+    public AddAnimalsForListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +27,14 @@ public class ViewAllAnimalsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AnimalHelper ah = new AnimalHelper();
-		request.setAttribute("allAnimals", ah.showAllAnimals());
-		String path = "/animal-list.jsp";
-		if (ah.showAllAnimals().isEmpty()){
+		request.setAttribute("allItems", ah.showAllAnimals());
+		String path = "/new-list.jsp";
+		if (ah.showAllAnimals().isEmpty()) {
+			request.setAttribute("allItems", " ");
 			path = "/index.html";
 		}
-		getServletContext().getRequestDispatcher(path).forward(request,	response);
+
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**

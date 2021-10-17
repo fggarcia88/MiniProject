@@ -42,14 +42,14 @@ public void insertAnimal(Animal a) {
 	public void deleteAnimal(Animal toDelete) {
 		
 		try {
-			
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
-			TypedQuery<Animal>typedQuery = em.createQuery("select ai from Animal where ai.animalType = :selectedAnimalType and ai.animalBreed = :selectedAnimalBreed and ai.animalName = :selectedAnimalName"
-					+ "and ai.animalColor = :selectedAnimalColor and ai.animalOwnerName = :selectedAnimalOwnerName", Animal.class);
+			TypedQuery<Animal>typedQuery = em.createQuery("select an from Animal an where an.animalType = :selectedAnimalType "
+					+ "and an.animalBreed = :selectedAnimalBreed and an.animalName = :selectedAnimalName "
+					+ "and an.animalColor = :selectedAnimalColor and an.animalOwnerName = :selectedAnimalOwnerName", Animal.class);
 			
 			typedQuery.setParameter("selectedAnimalType", toDelete.getAnimalType());
-			typedQuery.setParameter("selectedAnimaBreed", toDelete.getAnimalBreed());
+			typedQuery.setParameter("selectedAnimalBreed", toDelete.getAnimalBreed());
 			typedQuery.setParameter("selectedAnimalName", toDelete.getAnimalName());
 			typedQuery.setParameter("selectedAnimalColor", toDelete.getAnimalColor());
 			typedQuery.setParameter("selectedAnimalOwnerName", toDelete.getAnimalOwnerName());
