@@ -52,7 +52,7 @@ public class EditAnimalServlet extends HttpServlet {
 		animalToUpdate.setAnimalType(type);
 		animalToUpdate.setAnimalBreed(breed);
 		animalToUpdate.setAnimalColor(color);
-		animalToUpdate.setAnimalOwnerName(ownerName);
+		animalToUpdate.setaddedBy(ownerName);
 		
 		ah.updateAnimal(animalToUpdate);
 		

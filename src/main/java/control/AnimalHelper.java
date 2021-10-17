@@ -1,5 +1,6 @@
 package control;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -46,20 +47,19 @@ public void insertAnimal(Animal a) {
 			em.getTransaction().begin();
 			TypedQuery<Animal>typedQuery = em.createQuery("select an from Animal an where an.animalType = :selectedAnimalType "
 					+ "and an.animalBreed = :selectedAnimalBreed and an.animalName = :selectedAnimalName "
-					+ "and an.animalColor = :selectedAnimalColor and an.animalOwnerName = :selectedAnimalOwnerName", Animal.class);
+					+ "and an.animalColor = :selectedAnimalColor and an.addedBy = :selectedaddedBy", Animal.class);
 			
 			typedQuery.setParameter("selectedAnimalType", toDelete.getAnimalType());
 			typedQuery.setParameter("selectedAnimalBreed", toDelete.getAnimalBreed());
 			typedQuery.setParameter("selectedAnimalName", toDelete.getAnimalName());
 			typedQuery.setParameter("selectedAnimalColor", toDelete.getAnimalColor());
-			typedQuery.setParameter("selectedAnimalOwnerName", toDelete.getAnimalOwnerName());
+			typedQuery.setParameter("selectedaddedBy", toDelete.getaddedBy());
 			
 			typedQuery.setMaxResults(1);
 			Animal result = typedQuery.getSingleResult();
 			em.remove(result);
 			em.getTransaction().commit();
-			em.close();
-			
+			em.close();	
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("The information entered did not find any results or was invalid. Try again!");
@@ -139,20 +139,20 @@ public void insertAnimal(Animal a) {
 	}
 
 	/**
-	 * @param animalOwnerName
+	 * @param addedBy
 	 * @return
 	 */
-	public List<Animal> searchForAnimalByOwnerName(String animalOwnerName) {
+	public List<Animal> searchForAnimalByOwnerName(String addedBy) {
 		// TODO Auto-generated method stub
 		
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.animalOwnerName = :selectedAnimalOwnerName", Animal.class);
-		typedQuery.setParameter("selectedAnimalOwnerName", animalOwnerName);
-		List<Animal>foundAnimalOwnerName = typedQuery.getResultList();
+		TypedQuery<Animal>typedQuery = em.createQuery("Select ei FROM Animal ei where ei.addedBy = :selectedaddedBy", Animal.class);
+		typedQuery.setParameter("selectedaddedBy", addedBy);
+		List<Animal>foundaddedBy = typedQuery.getResultList();
 		em.close();
 		
-		return foundAnimalOwnerName;
+		return foundaddedBy;
 	}
 
 	/**

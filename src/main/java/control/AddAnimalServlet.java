@@ -41,9 +41,9 @@ public class AddAnimalServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String breed = request.getParameter("breed");
 		String color = request.getParameter("color");
-		String ownerName = request.getParameter("ownerName");	
+		String addedBy = request.getParameter("addedBy");	
 		
-		Animal a = new Animal(type, breed, animalName, color, ownerName);
+		Animal a = new Animal(type, breed, animalName, color, addedBy);
 		AnimalHelper ah = new AnimalHelper();
 		
 		ah.insertAnimal(a);

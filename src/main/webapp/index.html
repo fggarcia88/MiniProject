@@ -4,28 +4,31 @@
         <meta charset="ISO-8859-1">
         <title>Animal Day Care Check-in System</title>
     </head>
-<body>
-    <h1>Animal Day Care</h1>
-    <form action="addAnimalServlet" method="post">
-        Animal Name: <input type="text" name="animalName">
-        <br>
-        Type: <input type="text" name="type">
-        <br>
-        Breed: <input type="text" name="breed">
-        <br>                
-        Color: <input type="text" name="color">
-        <br>
-        Owner Name: <input type="text" name="ownerName">
-        <br>
-        <input type="submit" value="Add Animal">
-    </form>
-	<h2>Menu</h2>
-	<a href="index.html">Add a new animal</a>
-	<br>
-	<a href="viewAllAnimalsServlet">View the animals in Day Care</a>
-	<br>
-	<a href="viewAllListsServlet">View all Owner Animal lists</a>
-	<br>
-	<a href="addAnimalsForListServlet">Create a Owner Animal list</a>
-</body>
+	<body>
+		<nav>
+			<h2>Menu</h2>
+			<a href="index.html">Add a new animal</a>
+			<br>
+			<a href="viewAllAnimalsServlet">View the animals in Day Care</a>
+			<br>
+			<a href="viewAllListsServlet">View all Owner Animal lists</a>
+			<br>
+			<a href="addAnimalsForListServlet">Create a Owner Animal list</a>
+		</nav>
+		<br>
+	    <h1>Add an animal</h1>
+	    <form action="addAnimalServlet" method="post">
+	        Animal Name: <input type="text" name="animalName">
+	        <br>
+	        Type: <input type="text" name="type">
+	        <br>
+	        Breed: <input type="text" name="breed">
+	        <br>                
+	        Color: <input type="text" name="color">
+	        <br>
+	        Added By: <input type="text" name="addedBy">
+	        <br>
+	        <input type="submit" value="Add Animal">
+	    </form>
+	</body>
 </html>

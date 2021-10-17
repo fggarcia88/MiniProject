@@ -40,8 +40,8 @@ public class CreateNewAnimalListServlet extends HttpServlet {
     	String month = request.getParameter("month");
     	String day = request.getParameter("day");
     	String year = request.getParameter("year");
-    	String animalOwnerFirstName = request.getParameter("animalOwnerFirstName");
-    	String animalOwnerLastName = request.getParameter("animalOwnerLastName");
+    	String animalOwnerFirstName = request.getParameter("ownerFirstName");
+    	String animalOwnerLastName = request.getParameter("ownerLastName");
     	LocalDate ld;
     	try {
     		ld = LocalDate.of(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day));
@@ -66,7 +66,7 @@ public class CreateNewAnimalListServlet extends HttpServlet {
     	aldh.insertNewDetails(ald);
     	System.out.println("Success!");
     	System.out.println(ald.toString());
-    	getServletContext().getRequestDispatcher("/viewAllAnimalsServlet").forward(request, response);
+    	getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
     }
 
 	/**

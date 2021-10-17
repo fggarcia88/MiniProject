@@ -24,10 +24,10 @@ public class StartProgram {
 			System.out.print("Enter the color of the animal: ");
 			String animalColor = in.nextLine();
 			System.out.print("Enter the owners name: ");
-			String animalOwnerName = in.nextLine();
+			String addedBy = in.nextLine();
 		
 
-			Animal toAdd = new Animal(animalType, animalBreed, animalName, animalColor, animalOwnerName);
+			Animal toAdd = new Animal(animalType, animalBreed, animalName, animalColor, addedBy);
 			ah.insertAnimal(toAdd);
 			
 		}
@@ -44,10 +44,10 @@ public class StartProgram {
 			System.out.print("Enter the color of the animal to delete: ");
 			String animalColor = in.nextLine();
 			System.out.print("Enter the owner's name of the animal to delete: ");
-			String animalOwnerName = in.nextLine();
+			String addedBy = in.nextLine();
 
 			
-			Animal toDelete = new Animal(animalType, animalBreed, animalName, animalColor, animalOwnerName);
+			Animal toDelete = new Animal(animalType, animalBreed, animalName, animalColor, addedBy);
 			ah.deleteAnimal(toDelete);
 		}
 
@@ -89,8 +89,8 @@ public class StartProgram {
 			 else {
 				 
 				System.out.print("Enter the name of the animal's owner you're looking for: ");
-				String animalOwnerName = in.nextLine();
-				foundAnimal = ah.searchForAnimalByOwnerName(animalOwnerName);
+				String addedBy = in.nextLine();
+				foundAnimal = ah.searchForAnimalByOwnerName(addedBy);
 				
 			}
 
@@ -104,7 +104,7 @@ public class StartProgram {
 				int idToEdit = in.nextInt();
 
 				Animal toEdit = ah.searchForAnimalByAnimalId(idToEdit);
-				System.out.println("Retrieved " + toEdit.getAnimalName() + " from " + toEdit.getAnimalOwnerName());
+				System.out.println("Retrieved " + toEdit.getAnimalName() + " from " + toEdit.getaddedBy());
 				
 
 				System.out.println("1 : Update the animal's type");
@@ -139,8 +139,8 @@ public class StartProgram {
 				}
 				else if (update == 5) {
 					System.out.println("Updated animal owner's name: ");
-					String newAnimalOwnerName = in.nextLine();
-					toEdit.setAnimalOwnerName(newAnimalOwnerName);
+					String newaddedBy = in.nextLine();
+					toEdit.setaddedBy(newaddedBy);
 					
 				}
 

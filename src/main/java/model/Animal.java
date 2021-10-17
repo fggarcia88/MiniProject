@@ -25,7 +25,7 @@ public class Animal {
 	private String animalBreed;
 	private String animalName;
 	private String animalColor;
-	private String animalOwnerName;
+	private String addedBy;
 	
 	public Animal() {
 		
@@ -33,7 +33,7 @@ public class Animal {
 		
 	}
 	
-	public Animal(String animalType, String animalBreed, String animalName, String animalColor, String animalOwnerName) {
+	public Animal(String animalType, String animalBreed, String animalName, String animalColor, String addedBy) {
 		
 		super();
 		
@@ -41,7 +41,7 @@ public class Animal {
 		this.animalBreed = animalBreed;
 		this.animalName = animalName;
 		this.animalColor = animalColor;
-		this.animalOwnerName = animalOwnerName;
+		this.addedBy = addedBy;
 	
 		
 	}
@@ -83,16 +83,16 @@ public class Animal {
 		this.animalColor = animalColor;
 	}
 	/**
-	 * @return the animalOwnerName
+	 * @return the addedBy
 	 */
-	public String getAnimalOwnerName() {
-		return animalOwnerName;
+	public String getaddedBy() {
+		return addedBy;
 	}
 	/**
-	 * @param animalOwnerName the animalOwnerName to set
+	 * @param addedBy the addedBy to set
 	 */
-	public void setAnimalOwnerName(String animalOwnerName) {
-		this.animalOwnerName = animalOwnerName;
+	public void setaddedBy(String addedBy) {
+		this.addedBy = addedBy;
 	}
 	/**
 	 * @return the animalCheckInDate
@@ -135,7 +135,7 @@ public class Animal {
 	public String AnimalDaycareDetails() {
 		
 		return "Animal ID: " + this.animalId + " || " + "Animal Type: " + this.animalType + " || " + "Animal Breed: " + this.animalBreed + " || " + "Animal Name: " + this.animalName +
-				" || " + "Animal Owner's Name: " + this.animalOwnerName;
+				" || " + "Added By: " + this.addedBy;
 	}
 	
 
