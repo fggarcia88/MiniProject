@@ -40,6 +40,8 @@ public class AnimalOwnerTester {
 		for (AnimalListDetails animalListDetails : allAnimals) {
 			System.out.println(animalListDetails.toString());
 			
+			/// note added for test
+			
 		}
 
 	}
